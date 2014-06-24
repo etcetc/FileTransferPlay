@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBMFileTransferManager.h"
 
-@interface TBMViewController : UIViewController
+@interface TBMViewController : UIViewController <TBMFileTransferDelegate>
+
+@property (nonatomic,weak) IBOutlet UIImageView * image;
+@property (nonatomic,weak) IBOutlet UIView * transferViewArea;
 
 @end

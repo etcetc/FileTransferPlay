@@ -21,6 +21,33 @@
 		A51306171954D6560002D372 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51305F91954D6560002D372 /* UIKit.framework */; };
 		A513061F1954D6560002D372 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A513061D1954D6560002D372 /* InfoPlist.strings */; };
 		A51306211954D6560002D372 /* FileTransferPlayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306201954D6560002D372 /* FileTransferPlayTests.m */; };
+		A513062C1954D6680002D372 /* TBMFileTransferManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A513062B1954D6680002D372 /* TBMFileTransferManager.m */; };
+		A513064B1954D9010002D372 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A513062F1954D9010002D372 /* AmazonClientManager.m */; };
+		A513064C1954D9010002D372 /* AmazonKeyChainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306321954D9010002D372 /* AmazonKeyChainWrapper.m */; };
+		A513064D1954D9010002D372 /* AmazonTVMClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306341954D9010002D372 /* AmazonTVMClient.m */; };
+		A513064E1954D9010002D372 /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306361954D9010002D372 /* Crypto.m */; };
+		A513064F1954D9010002D372 /* GetTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306381954D9010002D372 /* GetTokenRequest.m */; };
+		A51306501954D9010002D372 /* GetTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A513063A1954D9010002D372 /* GetTokenResponse.m */; };
+		A51306511954D9010002D372 /* GetTokenResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A513063C1954D9010002D372 /* GetTokenResponseHandler.m */; };
+		A51306521954D9010002D372 /* JSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A513063E1954D9010002D372 /* JSONUtilities.m */; };
+		A51306531954D9010002D372 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306401954D9010002D372 /* KeychainItemWrapper.m */; };
+		A51306541954D9010002D372 /* RegisterDeviceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306421954D9010002D372 /* RegisterDeviceRequest.m */; };
+		A51306551954D9010002D372 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306441954D9010002D372 /* Request.m */; };
+		A51306561954D9010002D372 /* RequestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306461954D9010002D372 /* RequestDelegate.m */; };
+		A51306571954D9010002D372 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = A51306481954D9010002D372 /* Response.m */; };
+		A51306581954D9010002D372 /* ResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A513064A1954D9010002D372 /* ResponseHandler.m */; };
+		A513065B1954D94E0002D372 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51306591954D94E0002D372 /* AWSRuntime.framework */; };
+		A513065C1954D94E0002D372 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A513065A1954D94E0002D372 /* AWSS3.framework */; };
+		A51306601954DA080002D372 /* 3generationsmen.JPG in Resources */ = {isa = PBXBuildFile; fileRef = A513065E1954DA080002D372 /* 3generationsmen.JPG */; };
+		A51306631957D7320002D372 /* uploadtest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A51306621957D7320002D372 /* uploadtest.jpg */; };
+		A54462FF1958A6CF005ED14E /* Georgia1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A54462FE1958A6CF005ED14E /* Georgia1.jpg */; };
+		A54463021958FA94005ED14E /* TBMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A54463011958FA94005ED14E /* TBMLogger.m */; };
+		A54463051959EDBD005ED14E /* TBMTransferView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54463041959EDBD005ED14E /* TBMTransferView.m */; };
+		A54463071959EDD8005ED14E /* TBMTransferView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54463061959EDD8005ED14E /* TBMTransferView.xib */; };
+		A544630E195A123D005ED14E /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = A544630A195A123D005ED14E /* download.png */; };
+		A544630F195A123D005ED14E /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = A544630B195A123D005ED14E /* upload.png */; };
+		A5446312195A18CC005ED14E /* nok.png in Resources */ = {isa = PBXBuildFile; fileRef = A5446310195A18CC005ED14E /* nok.png */; };
+		A5446313195A18CC005ED14E /* ok.png in Resources */ = {isa = PBXBuildFile; fileRef = A5446311195A18CC005ED14E /* ok.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +80,50 @@
 		A513061C1954D6560002D372 /* FileTransferPlayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FileTransferPlayTests-Info.plist"; sourceTree = "<group>"; };
 		A513061E1954D6560002D372 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A51306201954D6560002D372 /* FileTransferPlayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileTransferPlayTests.m; sourceTree = "<group>"; };
+		A513062A1954D6680002D372 /* TBMFileTransferManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMFileTransferManager.h; sourceTree = "<group>"; };
+		A513062B1954D6680002D372 /* TBMFileTransferManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMFileTransferManager.m; sourceTree = "<group>"; };
+		A513062E1954D9010002D372 /* AmazonClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonClientManager.h; sourceTree = "<group>"; };
+		A513062F1954D9010002D372 /* AmazonClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonClientManager.m; sourceTree = "<group>"; };
+		A51306311954D9010002D372 /* AmazonKeyChainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonKeyChainWrapper.h; sourceTree = "<group>"; };
+		A51306321954D9010002D372 /* AmazonKeyChainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonKeyChainWrapper.m; sourceTree = "<group>"; };
+		A51306331954D9010002D372 /* AmazonTVMClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonTVMClient.h; sourceTree = "<group>"; };
+		A51306341954D9010002D372 /* AmazonTVMClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonTVMClient.m; sourceTree = "<group>"; };
+		A51306351954D9010002D372 /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
+		A51306361954D9010002D372 /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
+		A51306371954D9010002D372 /* GetTokenRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTokenRequest.h; sourceTree = "<group>"; };
+		A51306381954D9010002D372 /* GetTokenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTokenRequest.m; sourceTree = "<group>"; };
+		A51306391954D9010002D372 /* GetTokenResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTokenResponse.h; sourceTree = "<group>"; };
+		A513063A1954D9010002D372 /* GetTokenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTokenResponse.m; sourceTree = "<group>"; };
+		A513063B1954D9010002D372 /* GetTokenResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTokenResponseHandler.h; sourceTree = "<group>"; };
+		A513063C1954D9010002D372 /* GetTokenResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTokenResponseHandler.m; sourceTree = "<group>"; };
+		A513063D1954D9010002D372 /* JSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONUtilities.h; sourceTree = "<group>"; };
+		A513063E1954D9010002D372 /* JSONUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONUtilities.m; sourceTree = "<group>"; };
+		A513063F1954D9010002D372 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		A51306401954D9010002D372 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		A51306411954D9010002D372 /* RegisterDeviceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterDeviceRequest.h; sourceTree = "<group>"; };
+		A51306421954D9010002D372 /* RegisterDeviceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterDeviceRequest.m; sourceTree = "<group>"; };
+		A51306431954D9010002D372 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
+		A51306441954D9010002D372 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		A51306451954D9010002D372 /* RequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestDelegate.h; sourceTree = "<group>"; };
+		A51306461954D9010002D372 /* RequestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestDelegate.m; sourceTree = "<group>"; };
+		A51306471954D9010002D372 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
+		A51306481954D9010002D372 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
+		A51306491954D9010002D372 /* ResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseHandler.h; sourceTree = "<group>"; };
+		A513064A1954D9010002D372 /* ResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseHandler.m; sourceTree = "<group>"; };
+		A51306591954D94E0002D372 /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSRuntime.framework; sourceTree = "<group>"; };
+		A513065A1954D94E0002D372 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		A513065E1954DA080002D372 /* 3generationsmen.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3generationsmen.JPG; sourceTree = "<group>"; };
+		A51306621957D7320002D372 /* uploadtest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = uploadtest.jpg; sourceTree = "<group>"; };
+		A54462FE1958A6CF005ED14E /* Georgia1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Georgia1.jpg; sourceTree = "<group>"; };
+		A54463001958FA94005ED14E /* TBMLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMLogger.h; sourceTree = "<group>"; };
+		A54463011958FA94005ED14E /* TBMLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMLogger.m; sourceTree = "<group>"; };
+		A54463031959EDBD005ED14E /* TBMTransferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBMTransferView.h; sourceTree = "<group>"; };
+		A54463041959EDBD005ED14E /* TBMTransferView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBMTransferView.m; sourceTree = "<group>"; };
+		A54463061959EDD8005ED14E /* TBMTransferView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBMTransferView.xib; sourceTree = "<group>"; };
+		A544630A195A123D005ED14E /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = download.png; path = FileTransferPlay/download.png; sourceTree = "<group>"; };
+		A544630B195A123D005ED14E /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = upload.png; path = FileTransferPlay/upload.png; sourceTree = "<group>"; };
+		A5446310195A18CC005ED14E /* nok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nok.png; path = FileTransferPlay/nok.png; sourceTree = "<group>"; };
+		A5446311195A18CC005ED14E /* ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ok.png; path = FileTransferPlay/ok.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +134,8 @@
 				A51305F81954D6560002D372 /* CoreGraphics.framework in Frameworks */,
 				A51305FA1954D6560002D372 /* UIKit.framework in Frameworks */,
 				A51305F61954D6560002D372 /* Foundation.framework in Frameworks */,
+				A513065B1954D94E0002D372 /* AWSRuntime.framework in Frameworks */,
+				A513065C1954D94E0002D372 /* AWSS3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,8 +155,10 @@
 		A51305E91954D6560002D372 = {
 			isa = PBXGroup;
 			children = (
+				A513062D1954D9010002D372 /* AWS */,
 				A51305FB1954D6560002D372 /* FileTransferPlay */,
 				A513061A1954D6560002D372 /* FileTransferPlayTests */,
+				A513065D1954D9ED0002D372 /* Resources */,
 				A51305F41954D6560002D372 /* Frameworks */,
 				A51305F31954D6560002D372 /* Products */,
 			);
@@ -101,6 +176,8 @@
 		A51305F41954D6560002D372 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A51306591954D94E0002D372 /* AWSRuntime.framework */,
+				A513065A1954D94E0002D372 /* AWSS3.framework */,
 				A51305F51954D6560002D372 /* Foundation.framework */,
 				A51305F71954D6560002D372 /* CoreGraphics.framework */,
 				A51305F91954D6560002D372 /* UIKit.framework */,
@@ -112,13 +189,20 @@
 		A51305FB1954D6560002D372 /* FileTransferPlay */ = {
 			isa = PBXGroup;
 			children = (
+				A513062A1954D6680002D372 /* TBMFileTransferManager.h */,
+				A513062B1954D6680002D372 /* TBMFileTransferManager.m */,
 				A51306041954D6560002D372 /* TBMAppDelegate.h */,
 				A51306051954D6560002D372 /* TBMAppDelegate.m */,
 				A51306071954D6560002D372 /* Main.storyboard */,
 				A513060A1954D6560002D372 /* TBMViewController.h */,
 				A513060B1954D6560002D372 /* TBMViewController.m */,
+				A54463031959EDBD005ED14E /* TBMTransferView.h */,
+				A54463041959EDBD005ED14E /* TBMTransferView.m */,
+				A54463061959EDD8005ED14E /* TBMTransferView.xib */,
 				A513060D1954D6560002D372 /* Images.xcassets */,
 				A51305FC1954D6560002D372 /* Supporting Files */,
+				A54463001958FA94005ED14E /* TBMLogger.h */,
+				A54463011958FA94005ED14E /* TBMLogger.m */,
 			);
 			path = FileTransferPlay;
 			sourceTree = "<group>";
@@ -150,6 +234,63 @@
 				A513061D1954D6560002D372 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A513062D1954D9010002D372 /* AWS */ = {
+			isa = PBXGroup;
+			children = (
+				A513062E1954D9010002D372 /* AmazonClientManager.h */,
+				A513062F1954D9010002D372 /* AmazonClientManager.m */,
+				A51306301954D9010002D372 /* TVMClient */,
+			);
+			path = AWS;
+			sourceTree = "<group>";
+		};
+		A51306301954D9010002D372 /* TVMClient */ = {
+			isa = PBXGroup;
+			children = (
+				A51306311954D9010002D372 /* AmazonKeyChainWrapper.h */,
+				A51306321954D9010002D372 /* AmazonKeyChainWrapper.m */,
+				A51306331954D9010002D372 /* AmazonTVMClient.h */,
+				A51306341954D9010002D372 /* AmazonTVMClient.m */,
+				A51306351954D9010002D372 /* Crypto.h */,
+				A51306361954D9010002D372 /* Crypto.m */,
+				A51306371954D9010002D372 /* GetTokenRequest.h */,
+				A51306381954D9010002D372 /* GetTokenRequest.m */,
+				A51306391954D9010002D372 /* GetTokenResponse.h */,
+				A513063A1954D9010002D372 /* GetTokenResponse.m */,
+				A513063B1954D9010002D372 /* GetTokenResponseHandler.h */,
+				A513063C1954D9010002D372 /* GetTokenResponseHandler.m */,
+				A513063D1954D9010002D372 /* JSONUtilities.h */,
+				A513063E1954D9010002D372 /* JSONUtilities.m */,
+				A513063F1954D9010002D372 /* KeychainItemWrapper.h */,
+				A51306401954D9010002D372 /* KeychainItemWrapper.m */,
+				A51306411954D9010002D372 /* RegisterDeviceRequest.h */,
+				A51306421954D9010002D372 /* RegisterDeviceRequest.m */,
+				A51306431954D9010002D372 /* Request.h */,
+				A51306441954D9010002D372 /* Request.m */,
+				A51306451954D9010002D372 /* RequestDelegate.h */,
+				A51306461954D9010002D372 /* RequestDelegate.m */,
+				A51306471954D9010002D372 /* Response.h */,
+				A51306481954D9010002D372 /* Response.m */,
+				A51306491954D9010002D372 /* ResponseHandler.h */,
+				A513064A1954D9010002D372 /* ResponseHandler.m */,
+			);
+			path = TVMClient;
+			sourceTree = "<group>";
+		};
+		A513065D1954D9ED0002D372 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A5446310195A18CC005ED14E /* nok.png */,
+				A5446311195A18CC005ED14E /* ok.png */,
+				A544630A195A123D005ED14E /* download.png */,
+				A544630B195A123D005ED14E /* upload.png */,
+				A54462FE1958A6CF005ED14E /* Georgia1.jpg */,
+				A51306621957D7320002D372 /* uploadtest.jpg */,
+				A513065E1954DA080002D372 /* 3generationsmen.JPG */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +370,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A544630F195A123D005ED14E /* upload.png in Resources */,
+				A51306601954DA080002D372 /* 3generationsmen.JPG in Resources */,
+				A5446312195A18CC005ED14E /* nok.png in Resources */,
+				A544630E195A123D005ED14E /* download.png in Resources */,
+				A51306631957D7320002D372 /* uploadtest.jpg in Resources */,
+				A54462FF1958A6CF005ED14E /* Georgia1.jpg in Resources */,
+				A5446313195A18CC005ED14E /* ok.png in Resources */,
 				A513060E1954D6560002D372 /* Images.xcassets in Resources */,
+				A54463071959EDD8005ED14E /* TBMTransferView.xib in Resources */,
 				A51306001954D6560002D372 /* InfoPlist.strings in Resources */,
 				A51306091954D6560002D372 /* Main.storyboard in Resources */,
 			);
@@ -250,9 +399,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51306561954D9010002D372 /* RequestDelegate.m in Sources */,
+				A51306581954D9010002D372 /* ResponseHandler.m in Sources */,
+				A51306521954D9010002D372 /* JSONUtilities.m in Sources */,
+				A51306571954D9010002D372 /* Response.m in Sources */,
+				A51306531954D9010002D372 /* KeychainItemWrapper.m in Sources */,
 				A51306061954D6560002D372 /* TBMAppDelegate.m in Sources */,
 				A51306021954D6560002D372 /* main.m in Sources */,
+				A54463051959EDBD005ED14E /* TBMTransferView.m in Sources */,
+				A54463021958FA94005ED14E /* TBMLogger.m in Sources */,
+				A51306511954D9010002D372 /* GetTokenResponseHandler.m in Sources */,
+				A513062C1954D6680002D372 /* TBMFileTransferManager.m in Sources */,
 				A513060C1954D6560002D372 /* TBMViewController.m in Sources */,
+				A513064E1954D9010002D372 /* Crypto.m in Sources */,
+				A51306501954D9010002D372 /* GetTokenResponse.m in Sources */,
+				A513064B1954D9010002D372 /* AmazonClientManager.m in Sources */,
+				A51306541954D9010002D372 /* RegisterDeviceRequest.m in Sources */,
+				A51306551954D9010002D372 /* Request.m in Sources */,
+				A513064C1954D9010002D372 /* AmazonKeyChainWrapper.m in Sources */,
+				A513064F1954D9010002D372 /* GetTokenRequest.m in Sources */,
+				A513064D1954D9010002D372 /* AmazonTVMClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +543,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FileTransferPlay/FileTransferPlay-Prefix.pch";
 				INFOPLIST_FILE = "FileTransferPlay/FileTransferPlay-Info.plist";
@@ -390,6 +560,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FileTransferPlay/FileTransferPlay-Prefix.pch";
 				INFOPLIST_FILE = "FileTransferPlay/FileTransferPlay-Info.plist";
@@ -457,6 +631,7 @@
 				A51306261954D6560002D372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A51306271954D6560002D372 /* Build configuration list for PBXNativeTarget "FileTransferPlayTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +640,7 @@
 				A51306291954D6560002D372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
