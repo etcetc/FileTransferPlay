@@ -221,7 +221,7 @@ NSString *kKeychainKeyIdentifier;
     }
     
     if (keychainError != errSecSuccess) {
-        AMZLogDebug(@"Error saving value to keychain key '%@', Error Code: %ld", key, keychainError);
+        AMZLogDebug(@"Error saving value to keychain key '%@', Error Code: %d", key, (int)keychainError);
     } else {
         AMZLogDebug(@"Stored value:[%@] in KeyChain as key:[%@]", value, key);
     }

@@ -23,6 +23,7 @@
 static AmazonS3Client       *s3  = nil;
 static AmazonTVMClient      *tvm = nil;
 
+// TODO Make the TVM server URL be configurable/settable
 #define TVM_SERVER_URL @"http://default-environment-kkh4pgjjij.elasticbeanstalk.com"
 
 NSString * const kAmazonTokenHeader = @"x-amz-security-token";

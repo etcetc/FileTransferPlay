@@ -1,18 +1,18 @@
 //
-//  TBMTransferView.m
+//  OBTransferView.m
 //  FileTransferPlay
 //
 //  Created by Farhad on 6/24/14.
 //  Copyright (c) 2014 NoPlanBees. All rights reserved.
 //
 
-#import "TBMTransferView.h"
+#import "OBTransferView.h"
 
-@implementation TBMTransferView
+@implementation OBTransferView
 
 -(id) initInRow: (NSUInteger) row
 {
-    NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"TBMTransferView" owner:self options:nil];
+    NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"OBTransferView" owner:self options:nil];
     if ( self = [super init] ) {
         self = nibs[0];
         self.frame = CGRectMake(0, self.bounds.size.height * row, self.bounds.size.width, self.bounds.size.height);

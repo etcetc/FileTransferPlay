@@ -1,15 +1,16 @@
 //
-//  TBMAppDelegate.m
+//  OBAppDelegate.m
 //  FileTransferPlay
 //
 //  Created by Farhad on 6/20/14.
 //  Copyright (c) 2014 NoPlanBees. All rights reserved.
 //
 
-#import "TBMAppDelegate.h"
-#import "TBMLogger.h"
+#import "OBAppDelegate.h"
+#import "OBLogger.h"
+#import "OBFileTransferManager.h"
 
-@implementation TBMAppDelegate
+@implementation OBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -45,7 +46,8 @@
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
-    TBM_INFO(@"handleEventsForBackgroundURLSession: for sessionId=%@",identifier);
+    OB_INFO(@"handleEventsForBackgroundURLSession: for sessionId=%@",identifier);
+    [[OBFileTransferManager instance] initSession];
     self.backgroundSessionCompletionHandler = completionHandler;
 }
 

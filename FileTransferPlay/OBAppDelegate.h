@@ -1,5 +1,5 @@
 //
-//  TBMAppDelegate.h
+//  OBAppDelegate.h
 //  FileTransferPlay
 //
 //  Created by Farhad on 6/20/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TBMAppDelegate : UIResponder <UIApplicationDelegate>
+@interface OBAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -1,5 +1,5 @@
 //
-//  TBMViewController.h
+//  OBViewController.h
 //  FileTransferPlay
 //
 //  Created by Farhad on 6/20/14.
@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TBMFileTransferManager.h"
+#import "OBFileTransferManager.h"
 
-@interface TBMViewController : UIViewController <TBMFileTransferDelegate>
+@interface OBViewController : UIViewController <OBFileTransferDelegate>
 
 @property (nonatomic,weak) IBOutlet UIImageView * image;
 @property (nonatomic,weak) IBOutlet UIView * transferViewArea;

@@ -1,5 +1,5 @@
 //
-//  TBMTransferView.h
+//  OBTransferView.h
 //  FileTransferPlay
 //
 //  Created by Farhad on 6/24/14.
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, TransferDirection) {
 };
 
 
-@interface TBMTransferView : UIView
+@interface OBTransferView : UIView
 
 @property (nonatomic,weak) IBOutlet UIImageView * direction;
 @property (nonatomic,weak) IBOutlet UIImageView * status;
