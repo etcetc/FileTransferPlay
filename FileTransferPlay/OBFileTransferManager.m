@@ -50,35 +50,6 @@
     return [NSString stringWithFormat:@"%@ task '%@' remote %@ local %@", (self.typeUpload ? @"Upload" : @"Download"), self.marker, self.remoteUrl, self.localFilePath];
 }
 
--(instancetype) initDownloadFrom: (NSString *)remoteUrl to: (NSString *)localFilePath  withMarker:(NSString *)markerId
-{
-    if ( [self init]) {
-        self.remoteUrl = remoteUrl;
-        self.localFilePath = localFilePath;
-        self.marker = markerId;
-        self.createdOn = [NSDate new];
-        self.typeUpload = NO;
-    } else {
-        [NSException raise:@"Unable to initialize OBFileTransferTask" format:nil];
-    }
-    return self;
-}
-
--(instancetype) initUploadTo: (NSString *)remoteUrl from: (NSString *)localFilePath  withMarker:(NSString *)markerId andParams: (NSDictionary *)params
-{
-    if ( [self init]) {
-        self.remoteUrl = remoteUrl;
-        self.localFilePath = localFilePath;
-        self.marker = markerId;
-        self.createdOn = [NSDate new];
-        self.typeUpload = YES;
-        self.params = params;
-    } else {
-        [NSException raise:@"Unable to initialize OBFileTransferTask" format:nil];
-    }
-    return self;
-}
-
 
 -(OBFileTransferAgent *) transferAgent
 {
@@ -95,7 +66,7 @@
     if ( self.typeUpload )
         return [self.transferAgent uploadFileRequest:self.localFilePath to:self.remoteUrl withParams:self.params];
     else
-        return [self.transferAgent downloadFileRequest:self.remoteUrl];
+        return [self.transferAgent downloadFileRequest:self.remoteUrl withParams:self.params];
 }
 
 
@@ -325,6 +296,7 @@ OBFileTransferTaskManager * _transferTaskManager = nil;
     static dispatch_once_t once;
     //    Create a single session and make it be thread-safe
     dispatch_once(&once, ^{
+        OB_INFO(@"Creating a %@ URLSession",self.foregroundTransferOnly ? @"foreground" : @"background");
         NSURLSessionConfiguration *configuration = self.foregroundTransferOnly ? [NSURLSessionConfiguration defaultSessionConfiguration] :
             [NSURLSessionConfiguration backgroundSessionConfiguration:OBFileTransferSessionIdentifier];
         configuration.HTTPMaximumConnectionsPerHost = 10;
@@ -383,6 +355,15 @@ OBFileTransferTaskManager * _transferTaskManager = nil;
 // --------------
 
 
+// Upload the file at the indicated filePath to the remoteFileUrl (do not include target filename here!).
+// Note that the params dictionary contains both parmetesr interpreted by the local transfer agent and those
+// that are sent along with the file for uploading.  Local params start with the underscore.  Specifically:
+//  FilenameParamKey: contains the uploaded filename. Default: it is pulled from the input filename
+//  ContentTypeParamKey: contains the content type to use.  Default: it is extracted from the filename extension.
+//  FormFileFieldNameParamKey: contains the field name containing the file. Default: file.
+// Note that in some file stores some of these parameters may be meaningless.  For example, for S3, the Amazon API uses its
+// own thing - we don't really care about the field name.
+
 - (void) uploadFile:(NSString *)filePath to:(NSString *)remoteFileUrl withMarker:(NSString *)markerId withParams:(NSDictionary *) params
 {
     NSString *fullRemoteUrl = [self fullRemotePath:remoteFileUrl];
@@ -411,14 +392,16 @@ OBFileTransferTaskManager * _transferTaskManager = nil;
 
 }
 
-- (void) downloadFile:(NSString *)remoteFileUrl to:(NSString *)filePath withMarker: (NSString *)markerId
+// Download the file from the remote URL to the provided filePath.
+//
+- (void) downloadFile:(NSString *)remoteFileUrl to:(NSString *)filePath withMarker: (NSString *)markerId withParams:(NSDictionary *) params
 {
     NSString *fullRemoteUrl = [self fullRemotePath:remoteFileUrl];
     NSString *fullDownloadPath =[self normalizeLocalDownloadPath:filePath];
 
     OBFileTransferAgent * fileTransferAgent = [OBFileTransferAgentFactory fileTransferAgentInstance:fullRemoteUrl];
 
-    NSMutableURLRequest *request = [fileTransferAgent downloadFileRequest:fullRemoteUrl];
+    NSMutableURLRequest *request = [fileTransferAgent downloadFileRequest:fullRemoteUrl withParams:params];
     NSURLSessionTask *task = [[self session] downloadTaskWithRequest:request];
                             
     [self.transferTaskManager trackDownloadNSTask:task toFilePath:fullDownloadPath withMarker:markerId ];
@@ -453,6 +436,44 @@ OBFileTransferTaskManager * _transferTaskManager = nil;
     
 }
 
+
+// ------
+// Upload & Download Completion Handling
+// ------
+
+// NOTE::: This gets called for upload and download when the task is complete, possibly w/ framework or server error (server error has bad response code)
+- (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+    OBFileTransferTask * obtask = [[self transferTaskManager] transferTaskForNSTask:task];
+    NSString *marker = obtask.marker;
+    NSHTTPURLResponse *response =   (NSHTTPURLResponse *)task.response;
+    //    OB_DEBUG(@"File transfer %@ response = %@",marker, response);
+    if ( task.state == NSURLSessionTaskStateCompleted ) {
+        //        We'll consider any of the 200 codes to be a success
+        if ( response.statusCode/100 == 2  ) {
+            //            We actually get this one when the internet is shut off in the middle of a download
+            if ( obtask.typeUpload ) {
+                NSError * error;
+                [[NSFileManager defaultManager] removeItemAtPath:[self temporaryFile:marker] error:&error];
+                if ( error != nil ) {
+                    OB_ERROR(@"Unable to delete file %@: %@",[self temporaryFile:marker],error.localizedDescription);
+                }
+                OB_INFO(@"File transfer for %@ done and tmp file deleted",marker);
+            }
+        } else {
+            //            We get this when internet is shut off in middle of upload
+            error = [self createErrorFromBadHttpResponse:response.statusCode];
+            OB_ERROR(@"%@ File Transfer for %@ received status code %ld and error %@",obtask.typeUpload ? @"Upload" : @"Download", marker,(long)response.statusCode, error.localizedDescription);
+        }
+        //        TODO - If not successfully completed put it retry queue??
+        [self.delegate fileTransferCompleted:marker withError:error];
+        [[self transferTaskManager] removeTransferTaskForNsTask:task];
+    } else {
+        OB_WARN(@"Indicated that task completed but state = %d", (int) task.state );
+    }
+}
+
+
 // ------
 // Upload
 // ------
@@ -460,7 +481,7 @@ OBFileTransferTaskManager * _transferTaskManager = nil;
 - (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
 {
     NSString *marker = [[self transferTaskManager] markerForNSTask:task];
-    NSUInteger percentDone = 100*totalBytesSent/totalBytesExpectedToSend;
+    NSUInteger percentDone = (NSUInteger)(100*totalBytesSent/totalBytesExpectedToSend);
     OB_DEBUG(@"Upload progress %@: %lu%% [sent:%llu, of:%llu]", marker, (unsigned long)percentDone, totalBytesSent, totalBytesExpectedToSend);
     if ( [self.delegate respondsToSelector:@selector(fileTransferProgress:percent:)] ) {
         NSString *marker = [[self transferTaskManager] markerForNSTask:task];
@@ -468,42 +489,15 @@ OBFileTransferTaskManager * _transferTaskManager = nil;
     }
 }
 
-- (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-{
-    NSString *marker = [[self transferTaskManager] markerForNSTask:task];
-    NSHTTPURLResponse *response =   (NSHTTPURLResponse *)task.response;
-//    OB_DEBUG(@"File transfer %@ response = %@",marker, response);
-    if ( task.state == NSURLSessionTaskStateCompleted ) {
-//        We'll consider any of the 200 codes to be a success
-        if ( response.statusCode/100 != 2  ) {
-//            We get this when internet is shut off in middle of upload
-            BOOL wasUpload = [[self transferTaskManager] transferTaskForNSTask:task].typeUpload;
-            error = [self createErrorFromBadHttpResponse:response.statusCode];
-            OB_ERROR(@"%@ File Transfer for %@ received status code %ld and error %@",wasUpload ? @"Upload" : @"Download", marker,(long)response.statusCode, error.localizedDescription);
-        } else {
-//            We actually get this one when the internet is shut off in the middle of a download
-            [[self transferTaskManager] removeTransferTaskForNsTask:task];
-            NSError * error;
-            [[NSFileManager defaultManager] removeItemAtPath:[self temporaryFile:marker] error:&error];
-            if ( error != nil ) {
-                OB_ERROR(@"Unable to delete file %@: %@",[self temporaryFile:marker],error.localizedDescription);
-            }
-            OB_INFO(@"File transfer for %@ done and tmp file deleted",marker);
-        }
-//        TODO - put it in the retry queue
-        [self.delegate fileTransferCompleted:marker withError:error];
-    } else {
-        OB_WARN(@"Indicated that task completed but state = %d", (int) task.state );
-    }
-}
-
 // --------
 // Download
 // --------
+
+// Download progress
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)task didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
     NSString *marker = [[self transferTaskManager] markerForNSTask:task];
-    NSUInteger percentDone = 100*totalBytesWritten/totalBytesExpectedToWrite;
+    NSUInteger percentDone = (NSUInteger)(100*totalBytesWritten/totalBytesExpectedToWrite);
     OB_DEBUG(@"Download progress %@: %lu%% [sent:%llu, of:%llu]", marker, (unsigned long)percentDone, totalBytesWritten, totalBytesExpectedToWrite);
     if ( [self.delegate respondsToSelector:@selector(fileTransferProgress:percent:)] ) {
         NSString *marker = [[self transferTaskManager] markerForNSTask:task];
@@ -511,28 +505,26 @@ OBFileTransferTaskManager * _transferTaskManager = nil;
     }
 }
 
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes
-{
-    //    NOT YET USPPORTED
-    DebugLog(@"ERROR: downloadTask didResumeAtOffset. We should not be getting this callback.");
-}
-
+// Completed the download
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
     NSString *marker = [[self transferTaskManager] markerForNSTask:downloadTask];
     OB_INFO(@"Download of %@ completed",marker);
     NSHTTPURLResponse *response =   (NSHTTPURLResponse *)downloadTask.response;
-//    OB_DEBUG(@"File transfer for %@ response = %@",marker, response);
-    if ( response.statusCode != 200  ) {
-        OB_ERROR(@"Download for %@ received status code %ld",marker,(long)response.statusCode);
-    } else {
-//        Now we need to copy the file to our downloads location...
+    if ( response.statusCode/100 == 2   ) {
+        //        Now we need to copy the file to our downloads location...
         NSError * error;
         [[NSFileManager defaultManager] copyItemAtPath:location.path toPath: [[[self transferTaskManager] transferTaskForNSTask: downloadTask] localFilePath] error:&error];
-        
-//        This is already called by the method URLSession:task:didCompletewithError: 
-//        [self.delegate fileTransferCompleted:marker withError:nil];
+    } else {
+        OB_ERROR(@"Download for %@ received status code %ld",marker,(long)response.statusCode);
     }
+}
+
+// Resumed
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes
+{
+    //    NOT YET USPPORTED
+    DebugLog(@"ERROR: downloadTask didResumeAtOffset. We should not be getting this callback.");
 }
 
 

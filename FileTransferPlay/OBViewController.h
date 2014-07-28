@@ -13,5 +13,9 @@
 
 @property (nonatomic,weak) IBOutlet UIImageView * image;
 @property (nonatomic,weak) IBOutlet UIView * transferViewArea;
+@property (weak, nonatomic) IBOutlet UISwitch *useS3Switch;
+@property (weak, nonatomic) IBOutlet UITextField *baseUrlInput;
+- (IBAction)changedFileStore:(id)sender;
+- (IBAction)changedFileStoreUrl:(id)sender;
 
 @end

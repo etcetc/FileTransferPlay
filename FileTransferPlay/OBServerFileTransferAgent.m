@@ -12,17 +12,28 @@
 
 NSString * const OBHttpFormBoundary = @"--------sdfllkjkjkli98ijj";
 
-// Create a download request to a standard URL
-- (NSMutableURLRequest *) downloadFileRequest:(NSString *)sourcefileUrl
+// Create a GET request to a standard URL.  Note that any parameters may be passed in the params
+// structure or else be in the sourceFileUrl
+- (NSMutableURLRequest *) downloadFileRequest:(NSString *)sourcefileUrl withParams:(NSDictionary *)params
 {
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:sourcefileUrl]];
+    NSString *fullSourceFileUrl = sourcefileUrl;
+    if ( params.count > 0 ) {
+        if ( [sourcefileUrl rangeOfString:@"?"].location !=  NSNotFound )
+            fullSourceFileUrl = [NSString stringWithFormat:@"%@?%@",sourcefileUrl,[self serializeParams:params]];
+        else
+            fullSourceFileUrl = [NSString stringWithFormat:@"%@&%@",sourcefileUrl,[self serializeParams:params]];
+    }
+    
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:fullSourceFileUrl]];
     [request setHTTPMethod:@"GET"];
     return request;
 }
 
--(NSMutableURLRequest *) uploadFileRequest:(NSString *)filePath to:(NSString *)targetFileUrl withParams:(NSDictionary *)params
+// Create a multipart/form-data POST request to upload the file to the indicated URL
+// Special internal parameters as well as other passed-on params can be added.  See OBFileTransferAgent.h/m
+-(NSMutableURLRequest *) uploadFileRequest:(NSString *)filePath to:(NSString *)targetUrl withParams:(NSDictionary *)params
 {
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:targetFileUrl]];
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:targetUrl]];
 
     NSString *formFileInputName = params[FormFileFieldNameParamKey] == nil ? @"file" : params[FormFileFieldNameParamKey];
     NSString *filename = params[FilenameParamKey] == nil ? [[filePath pathComponents] lastObject] : params[FilenameParamKey];

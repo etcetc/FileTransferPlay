@@ -14,7 +14,8 @@
 @interface OBViewController ()
 @property (nonatomic) NSMutableDictionary * transferViews;
 @property (nonatomic) OBFileTransferManager * fileTransferManager;
-
+@property (nonatomic) BOOL useS3;
+@property (nonatomic,strong) NSString * baseUrl;
 @end
 
 @implementation OBViewController
@@ -35,7 +36,9 @@
         _fileTransferManager =[OBFileTransferManager instance];
         _fileTransferManager.delegate = self;
         _fileTransferManager.downloadDirectory = [self documentDirectory];
-        _fileTransferManager.remoteUrlBase = @"s3://tbm_videos/";
+        
+        _fileTransferManager.remoteUrlBase = self.baseUrl;
+        
 //        _fileTransferManager.remoteUrlBase = @"http://localhost:3000/api/upload/";
 //        _fileTransferManager.remoteUrlBase = @"http://localhost:3000/videos/create";
     }
@@ -46,10 +49,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setup];
     OB_INFO(@"START");
-    
-//    This is a short one
-//    [self downloadFile:@"test6451.jpg"];
+}
+
+-(void) setup
+{
+    self.useS3 = YES;
+    self.useS3Switch.on = self.useS3;
+    [self setDefaultURLs];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,20 +69,25 @@
 
 -(void) uploadFile: (NSString *)filename
 {
-    static NSString * uploadBase;
-//    uploadBase = @"http://localhost:3000/api/upload/";
-//    uploadBase = @"http://localhost:3000/videos/create";
-    NSString * imagePath = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
+    NSString * uploadBase =@"";
+    if ( !self.useS3 )
+        uploadBase = @"upload/";
+    
+    NSString * localFilePath = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
     NSString *targetFilename = [NSString stringWithFormat:@"test%d.jpg", arc4random_uniform(10000)];
-    [self.fileTransferManager uploadFile:imagePath to:uploadBase withMarker:targetFilename withParams:@{FilenameParamKey: targetFilename, @"p1":@"test"}];
+    [self.fileTransferManager uploadFile:localFilePath to:uploadBase withMarker:targetFilename withParams:@{FilenameParamKey: targetFilename, @"p1":@"test"}];
     [self addTransferView:targetFilename isUpload:YES];
 
 }
 
--(void) downloadFile: (NSString *)filePathOnS3
+-(void) downloadFile: (NSString *)filename
 {
-    [self.fileTransferManager downloadFile:filePathOnS3 to:filePathOnS3 withMarker:filePathOnS3];
-    [self addTransferView:filePathOnS3 isUpload:NO];
+    static NSString * base=@"";
+    if ( !self.useS3 )
+        base = @"files/";
+
+    [self.fileTransferManager downloadFile:[base  stringByAppendingString:filename] to:filename withMarker:filename withParams:nil];
+    [self addTransferView:filename isUpload:NO];
 }
 
 
@@ -116,14 +129,15 @@
     }];
 }
 
+//NOTE: these are files that we know are there!
 -(void) start
 {
     [self clearTransferViews];
     [self.fileTransferManager reset];
     [self uploadFile: @"uploadtest.jpg"];
-//    [self downloadFile:@"test4128.jpg"];
-//    [self downloadFile:@"test9062.jpg"];
-//    [self uploadFile: @"uploadtest.jpg"];
+    [self downloadFile:@"test4128.jpg"];
+    [self downloadFile:@"test9062.jpg"];
+    [self uploadFile: @"uploadtest.jpg"];
 }
 
 -(IBAction)start:(id)sender
@@ -140,6 +154,26 @@
         return [(NSURL *)urls[0] URLByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]].path;
     } else
         return nil;
+}
+
+// Change the file store and appropriate URL
+- (IBAction)changedFileStore:(id)sender {
+    self.useS3 = self.useS3Switch.on;
+    [self setDefaultURLs];
+}
+
+- (IBAction)changedFileStoreUrl:(id)sender {
+    self.baseUrl = self.baseUrlInput.text;
+    self.fileTransferManager.remoteUrlBase = self.baseUrl;
+}
+
+-(void) setDefaultURLs
+{
+    if ( self.useS3 )
+        self.baseUrl = @"s3://tbm_videos/";
+    else
+        self.baseUrl = @"http://192.168.1.9:3000/";
+    self.baseUrlInput.text = self.baseUrl;
 }
 
 @end

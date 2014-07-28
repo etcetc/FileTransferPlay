@@ -1,0 +1,10 @@
+7/25/14
+Q: What happens if you start a transfer then go into airplane mode?
+A: Transfer immediately fails with error "server error"
+
+Q: What happens if you start a transfer then go into background?
+A: I no longer see the progress messages but it does complete the transfer.  I also got a "Flusing session" message at the end.
+
+Q: How many simultaneous transfers can be performed?
+A: By default 3 at a time, regardless of mixture of upload and download (tested w/ S3)
+

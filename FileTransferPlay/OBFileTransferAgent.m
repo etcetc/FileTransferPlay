@@ -14,7 +14,7 @@ NSString * const FilenameParamKey = @"_filename";
 NSString * const ContentTypeParamKey = @"_contentType";
 NSString * const FormFileFieldNameParamKey = @"_fileFieldName";
 
--(NSMutableURLRequest *) downloadFileRequest:(NSString *)sourcefileUrl
+-(NSMutableURLRequest *) downloadFileRequest:(NSString *)sourcefileUrl withParams:(NSDictionary *)params
 {
     [NSException raise:NSInternalInconsistencyException format:@"Please override method %@ in your subclass",NSStringFromSelector(_cmd)];
     return nil;
@@ -77,6 +77,33 @@ NSString * const FormFileFieldNameParamKey = @"_fileFieldName";
         mimeTypes = [NSDictionary dictionaryWithDictionary:types];
     });
     return mimeTypes;
+}
+
+// Serializes parameters
+// Courtesy of http://stackoverflow.com/questions/718429/creating-url-query-parameters-from-nsdictionary-objects-in-objectivec
+-(NSString *)serializeParams:(NSDictionary *)params
+{
+    NSMutableArray *pairs = NSMutableArray.array;
+    for (NSString *key in params.keyEnumerator) {
+        id value = params[key];
+        if ([value isKindOfClass:[NSDictionary class]])
+            for (NSString *subKey in value)
+                [pairs addObject:[NSString stringWithFormat:@"%@[%@]=%@", key, subKey, [self escapeValueForURLParameter:[value objectForKey:subKey]]]];
+        
+        else if ([value isKindOfClass:[NSArray class]])
+            for (NSString *subValue in value)
+                [pairs addObject:[NSString stringWithFormat:@"%@[]=%@", key, [self escapeValueForURLParameter:subValue]]];
+        
+        else
+            [pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [self escapeValueForURLParameter:value]]];
+        
+    }
+    return [pairs componentsJoinedByString:@"&"];
+}
+
+- (NSString *)escapeValueForURLParameter:(NSString *)valueToEscape {
+    return (__bridge_transfer NSString *) CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef) valueToEscape,
+                                                                                  NULL, (CFStringRef) @"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8);
 }
 
 @end

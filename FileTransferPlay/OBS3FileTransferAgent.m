@@ -13,7 +13,9 @@
 
 @implementation OBS3FileTransferAgent
 
-- (NSMutableURLRequest *) downloadFileRequest:(NSString *)s3Url
+// Create an S3 download request
+// params are ignored
+- (NSMutableURLRequest *) downloadFileRequest:(NSString *)s3Url withParams:(NSDictionary *)params
 {
     NSDictionary *urlComponents = [self s3UrlToComponents:s3Url];
     S3GetObjectRequest * getRequest = [[S3GetObjectRequest alloc] initWithKey:urlComponents[@"filePath"] withBucket:urlComponents[@"bucketName"]];

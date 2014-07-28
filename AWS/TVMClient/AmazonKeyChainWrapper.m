@@ -225,7 +225,6 @@ NSString *kKeychainKeyIdentifier;
     } else {
         AMZLogDebug(@"Stored value:[%@] in KeyChain as key:[%@]", value, key);
     }
-    NSString *returnedValue = [self getValueFromKeyChain:key];
 }
 
 +(OSStatus)wipeKeyChainOld

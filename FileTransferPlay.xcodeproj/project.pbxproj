@@ -43,6 +43,7 @@
 		A5298DEC19819C970043FBCC /* mimeTypes.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5298DEB19819C970043FBCC /* mimeTypes.txt */; };
 		A5298DF01982EF870043FBCC /* OBReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5298DEF1982EF870043FBCC /* OBReachabilityManager.m */; };
 		A5298DF41982F4940043FBCC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A5298DF31982F4940043FBCC /* Reachability.m */; };
+		A5298DF81985BF450043FBCC /* experiments.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5298DF71985BF450043FBCC /* experiments.txt */; };
 		A54462FF1958A6CF005ED14E /* Georgia1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A54462FE1958A6CF005ED14E /* Georgia1.jpg */; };
 		A54463021958FA94005ED14E /* OBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A54463011958FA94005ED14E /* OBLogger.m */; };
 		A54463051959EDBD005ED14E /* OBTransferView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54463041959EDBD005ED14E /* OBTransferView.m */; };
@@ -127,6 +128,8 @@
 		A5298DEF1982EF870043FBCC /* OBReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBReachabilityManager.m; sourceTree = "<group>"; };
 		A5298DF21982F4940043FBCC /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../../ReachabilityPlay/ReachabilityPlay/Reachability.h; sourceTree = "<group>"; };
 		A5298DF31982F4940043FBCC /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../../ReachabilityPlay/ReachabilityPlay/Reachability.m; sourceTree = "<group>"; };
+		A5298DF519843FFF0043FBCC /* todo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = todo.txt; sourceTree = "<group>"; };
+		A5298DF71985BF450043FBCC /* experiments.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = experiments.txt; sourceTree = "<group>"; };
 		A54462FE1958A6CF005ED14E /* Georgia1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Georgia1.jpg; sourceTree = "<group>"; };
 		A54463001958FA94005ED14E /* OBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLogger.h; sourceTree = "<group>"; };
 		A54463011958FA94005ED14E /* OBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLogger.m; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 		A51305E91954D6560002D372 = {
 			isa = PBXGroup;
 			children = (
+				A5298DF61985BF2C0043FBCC /* doc */,
 				A582378D197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodeld */,
 				A513062D1954D9010002D372 /* AWS */,
 				A51305FB1954D6560002D372 /* FileTransferPlay */,
@@ -339,6 +343,15 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		A5298DF61985BF2C0043FBCC /* doc */ = {
+			isa = PBXGroup;
+			children = (
+				A5298DF519843FFF0043FBCC /* todo.txt */,
+				A5298DF71985BF450043FBCC /* experiments.txt */,
+			);
+			name = doc;
+			sourceTree = "<group>";
+		};
 		A555B05C195DC7BC00809A4A /* FileTransferAgent */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +451,7 @@
 				A544630E195A123D005ED14E /* download.png in Resources */,
 				A5298DEC19819C970043FBCC /* mimeTypes.txt in Resources */,
 				A51306631957D7320002D372 /* uploadtest.jpg in Resources */,
+				A5298DF81985BF450043FBCC /* experiments.txt in Resources */,
 				A54462FF1958A6CF005ED14E /* Georgia1.jpg in Resources */,
 				A5446313195A18CC005ED14E /* ok.png in Resources */,
 				A513060E1954D6560002D372 /* Images.xcassets in Resources */,
