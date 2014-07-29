@@ -39,7 +39,7 @@ NSString * const OBHttpFormBoundary = @"--------sdfllkjkjkli98ijj";
     NSString *filename = params[FilenameParamKey] == nil ? [[filePath pathComponents] lastObject] : params[FilenameParamKey];
     NSString *contentType =params[ContentTypeParamKey] ? params[ContentTypeParamKey] : [self mimeTypeFromFilename:filePath];
     
-    params = [self removeSpecialParams:params];
+    NSDictionary * coreParams = [self removeSpecialParams:params];
 
     [request setHTTPMethod:@"POST"];
     
@@ -63,14 +63,14 @@ NSString * const OBHttpFormBoundary = @"--------sdfllkjkjkli98ijj";
     [body appendData:[@"\r\n"dataUsingEncoding:NSUTF8StringEncoding]];
 
     
-    if ( params.count > 0 ) {
+    if ( coreParams.count > 0 ) {
         NSMutableString *paramsString = [NSMutableString new];
         
         // add params (all params are strings)
-        for (NSString *param in [params allKeys]) {
+        for (NSString *param in [coreParams allKeys]) {
             [paramsString appendString:[NSString stringWithFormat:@"--%@\r\n", OBHttpFormBoundary]];
             [paramsString appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", param]];
-            [paramsString appendString:[NSString stringWithFormat:@"%@\r\n", params[param]]];
+            [paramsString appendString:[NSString stringWithFormat:@"%@\r\n", coreParams[param]]];
         }
         
         [body appendData:[paramsString dataUsingEncoding:NSUTF8StringEncoding]];

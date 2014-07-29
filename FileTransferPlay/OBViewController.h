@@ -17,5 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *baseUrlInput;
 - (IBAction)changedFileStore:(id)sender;
 - (IBAction)changedFileStoreUrl:(id)sender;
+- (IBAction)retryPending:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *pendingInfo;
 
 @end

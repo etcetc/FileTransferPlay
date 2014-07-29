@@ -36,6 +36,10 @@
             self.status.image = [UIImage imageNamed:@"nok.png"];
             break;
             
+        case PendingRetry:
+            self.status.image = [UIImage imageNamed:@"retry.png"];
+            break;
+            
         default:
             self.status.image = nil;
     }

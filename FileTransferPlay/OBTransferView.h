@@ -12,6 +12,7 @@ typedef NS_ENUM(NSUInteger, TransferStatus) {
     Transferring,
     Success,
     Error,
+    PendingRetry
 };
 
 typedef NS_ENUM(NSUInteger, TransferDirection) {

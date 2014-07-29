@@ -44,6 +44,9 @@
 		A5298DF01982EF870043FBCC /* OBReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5298DEF1982EF870043FBCC /* OBReachabilityManager.m */; };
 		A5298DF41982F4940043FBCC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A5298DF31982F4940043FBCC /* Reachability.m */; };
 		A5298DF81985BF450043FBCC /* experiments.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5298DF71985BF450043FBCC /* experiments.txt */; };
+		A5298DFE19862D820043FBCC /* OBFileTransferTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5298DFD19862D820043FBCC /* OBFileTransferTaskManager.m */; };
+		A5298E031986DAEC0043FBCC /* OBFileTransferTask.m in Sources */ = {isa = PBXBuildFile; fileRef = A5298E021986DAEC0043FBCC /* OBFileTransferTask.m */; };
+		A5298E05198802550043FBCC /* retry.png in Resources */ = {isa = PBXBuildFile; fileRef = A5298E04198802550043FBCC /* retry.png */; };
 		A54462FF1958A6CF005ED14E /* Georgia1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A54462FE1958A6CF005ED14E /* Georgia1.jpg */; };
 		A54463021958FA94005ED14E /* OBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A54463011958FA94005ED14E /* OBLogger.m */; };
 		A54463051959EDBD005ED14E /* OBTransferView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54463041959EDBD005ED14E /* OBTransferView.m */; };
@@ -123,13 +126,18 @@
 		A513065A1954D94E0002D372 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		A513065E1954DA080002D372 /* 3generationsmen.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3generationsmen.JPG; sourceTree = "<group>"; };
 		A51306621957D7320002D372 /* uploadtest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = uploadtest.jpg; sourceTree = "<group>"; };
-		A5298DEB19819C970043FBCC /* mimeTypes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mimeTypes.txt; path = TestServer/mimeTypes.txt; sourceTree = "<group>"; };
+		A5298DEB19819C970043FBCC /* mimeTypes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mimeTypes.txt; sourceTree = "<group>"; };
 		A5298DEE1982EF870043FBCC /* OBReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBReachabilityManager.h; sourceTree = "<group>"; };
 		A5298DEF1982EF870043FBCC /* OBReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBReachabilityManager.m; sourceTree = "<group>"; };
 		A5298DF21982F4940043FBCC /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../../ReachabilityPlay/ReachabilityPlay/Reachability.h; sourceTree = "<group>"; };
 		A5298DF31982F4940043FBCC /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../../ReachabilityPlay/ReachabilityPlay/Reachability.m; sourceTree = "<group>"; };
 		A5298DF519843FFF0043FBCC /* todo.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = todo.txt; sourceTree = "<group>"; };
 		A5298DF71985BF450043FBCC /* experiments.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = experiments.txt; sourceTree = "<group>"; };
+		A5298DFC19862D810043FBCC /* OBFileTransferTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBFileTransferTaskManager.h; sourceTree = "<group>"; };
+		A5298DFD19862D820043FBCC /* OBFileTransferTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBFileTransferTaskManager.m; sourceTree = "<group>"; };
+		A5298E011986DAEC0043FBCC /* OBFileTransferTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBFileTransferTask.h; sourceTree = "<group>"; };
+		A5298E021986DAEC0043FBCC /* OBFileTransferTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBFileTransferTask.m; sourceTree = "<group>"; };
+		A5298E04198802550043FBCC /* retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retry.png; path = FileTransferPlay/retry.png; sourceTree = "<group>"; };
 		A54462FE1958A6CF005ED14E /* Georgia1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Georgia1.jpg; sourceTree = "<group>"; };
 		A54463001958FA94005ED14E /* OBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLogger.h; sourceTree = "<group>"; };
 		A54463011958FA94005ED14E /* OBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLogger.m; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 		A513065D1954D9ED0002D372 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5298E04198802550043FBCC /* retry.png */,
 				A5298DEB19819C970043FBCC /* mimeTypes.txt */,
 				A5446310195A18CC005ED14E /* nok.png */,
 				A5446311195A18CC005ED14E /* ok.png */,
@@ -324,6 +333,7 @@
 		A5298DED1982EF5F0043FBCC /* FileTransferManager */ = {
 			isa = PBXGroup;
 			children = (
+				A5298DFF19862D8A0043FBCC /* FileTransferTask */,
 				A5298DF11982F4730043FBCC /* Reachability */,
 				A555B05C195DC7BC00809A4A /* FileTransferAgent */,
 				A513062A1954D6680002D372 /* OBFileTransferManager.h */,
@@ -350,6 +360,17 @@
 				A5298DF71985BF450043FBCC /* experiments.txt */,
 			);
 			name = doc;
+			sourceTree = "<group>";
+		};
+		A5298DFF19862D8A0043FBCC /* FileTransferTask */ = {
+			isa = PBXGroup;
+			children = (
+				A5298DFC19862D810043FBCC /* OBFileTransferTaskManager.h */,
+				A5298DFD19862D820043FBCC /* OBFileTransferTaskManager.m */,
+				A5298E011986DAEC0043FBCC /* OBFileTransferTask.h */,
+				A5298E021986DAEC0043FBCC /* OBFileTransferTask.m */,
+			);
+			name = FileTransferTask;
 			sourceTree = "<group>";
 		};
 		A555B05C195DC7BC00809A4A /* FileTransferAgent */ = {
@@ -455,6 +476,7 @@
 				A54462FF1958A6CF005ED14E /* Georgia1.jpg in Resources */,
 				A5446313195A18CC005ED14E /* ok.png in Resources */,
 				A513060E1954D6560002D372 /* Images.xcassets in Resources */,
+				A5298E05198802550043FBCC /* retry.png in Resources */,
 				A54463071959EDD8005ED14E /* OBTransferView.xib in Resources */,
 				A51306001954D6560002D372 /* InfoPlist.strings in Resources */,
 				A51306091954D6560002D372 /* Main.storyboard in Resources */,
@@ -476,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5298DFE19862D820043FBCC /* OBFileTransferTaskManager.m in Sources */,
 				A51306561954D9010002D372 /* RequestDelegate.m in Sources */,
 				A51306581954D9010002D372 /* ResponseHandler.m in Sources */,
 				A51306521954D9010002D372 /* JSONUtilities.m in Sources */,
@@ -502,6 +525,7 @@
 				A5298DF01982EF870043FBCC /* OBReachabilityManager.m in Sources */,
 				A513064D1954D9010002D372 /* AmazonTVMClient.m in Sources */,
 				A5298DF41982F4940043FBCC /* Reachability.m in Sources */,
+				A5298E031986DAEC0043FBCC /* OBFileTransferTask.m in Sources */,
 				A582D88A1979CB7600169146 /* OBFileTransferAgentFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

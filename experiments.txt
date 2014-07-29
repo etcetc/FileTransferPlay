@@ -8,3 +8,18 @@ A: I no longer see the progress messages but it does complete the transfer.  I a
 Q: How many simultaneous transfers can be performed?
 A: By default 3 at a time, regardless of mixture of upload and download (tested w/ S3)
 
+Q: What happens if the server goes away halfway through a transfer?
+E: I started 2 up/2 down and then killed the server halfway through
+A: the downloads failed immediately.  The uploads didn't - I waited less than an minute then started the server again and the uploads resumed.  The app was in the foreground the whole time.  If you wait long enough the uplaods fail also.  The upload timeout seems to be about a minute. 
+
+Q: what happens if the server isn't there when you retry?
+A: They all failed immediately.
+
+Q: What happens if the connection drops mid-transfer?
+A: Uploads and downloads fail pretty quickly
+
+Q: What happens if the connection drops halfway through a transfer and the app is in background?
+A: Same as in foreground - everything fails pretty quickly.  The UI is updated when we go back into foreground.
+
+Q: Can you be notified when reachability changes when you're in the background?
+A: 

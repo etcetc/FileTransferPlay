@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "OBFileTransferAgentFactory.h"
+#import "OBFileTransferTask.h"
 
 typedef NS_ENUM(NSUInteger, FileManagerErrorCode) {
     FileManageErrorUnknown = -1,
@@ -35,5 +36,9 @@ typedef NS_ENUM(NSUInteger, FileManagerErrorCode) {
 // Main API
 - (void) uploadFile:(NSString *)localFilePath to:(NSString *)remoteUrl withMarker: (NSString *)markerId withParams:(NSDictionary *)params;
 - (void) downloadFile:(NSString *)remoteUrl to:(NSString *)localFilePath withMarker: (NSString *)markerId withParams:(NSDictionary *)params;
+-(NSArray *) currentState;
+-(NSString *) pendingSummary;
+-(void) retryPending;
+
 
 @end
