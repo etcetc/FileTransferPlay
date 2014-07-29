@@ -47,7 +47,6 @@
 		A5298DFE19862D820043FBCC /* OBFileTransferTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5298DFD19862D820043FBCC /* OBFileTransferTaskManager.m */; };
 		A5298E031986DAEC0043FBCC /* OBFileTransferTask.m in Sources */ = {isa = PBXBuildFile; fileRef = A5298E021986DAEC0043FBCC /* OBFileTransferTask.m */; };
 		A5298E05198802550043FBCC /* retry.png in Resources */ = {isa = PBXBuildFile; fileRef = A5298E04198802550043FBCC /* retry.png */; };
-		A54462FF1958A6CF005ED14E /* Georgia1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A54462FE1958A6CF005ED14E /* Georgia1.jpg */; };
 		A54463021958FA94005ED14E /* OBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A54463011958FA94005ED14E /* OBLogger.m */; };
 		A54463051959EDBD005ED14E /* OBTransferView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54463041959EDBD005ED14E /* OBTransferView.m */; };
 		A54463071959EDD8005ED14E /* OBTransferView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54463061959EDD8005ED14E /* OBTransferView.xib */; };
@@ -58,7 +57,6 @@
 		A555B052195CFE1600809A4A /* OBServerFileTransferAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = A555B051195CFE1600809A4A /* OBServerFileTransferAgent.m */; };
 		A555B055195D2F3D00809A4A /* OBS3FileTransferAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = A555B054195D2F3D00809A4A /* OBS3FileTransferAgent.m */; };
 		A555B05B195DC7B500809A4A /* OBFileTransferAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = A555B05A195DC7B500809A4A /* OBFileTransferAgent.m */; };
-		A582378F197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A582378D197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodeld */; };
 		A582D88A1979CB7600169146 /* OBFileTransferAgentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A582D8891979CB7600169146 /* OBFileTransferAgentFactory.m */; };
 /* End PBXBuildFile section */
 
@@ -138,7 +136,6 @@
 		A5298E011986DAEC0043FBCC /* OBFileTransferTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBFileTransferTask.h; sourceTree = "<group>"; };
 		A5298E021986DAEC0043FBCC /* OBFileTransferTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBFileTransferTask.m; sourceTree = "<group>"; };
 		A5298E04198802550043FBCC /* retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retry.png; path = FileTransferPlay/retry.png; sourceTree = "<group>"; };
-		A54462FE1958A6CF005ED14E /* Georgia1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Georgia1.jpg; sourceTree = "<group>"; };
 		A54463001958FA94005ED14E /* OBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLogger.h; sourceTree = "<group>"; };
 		A54463011958FA94005ED14E /* OBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLogger.m; sourceTree = "<group>"; };
 		A54463031959EDBD005ED14E /* OBTransferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBTransferView.h; sourceTree = "<group>"; };
@@ -155,7 +152,6 @@
 		A555B058195DC73A00809A4A /* OBFileTransferAgentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBFileTransferAgentProtocol.h; sourceTree = "<group>"; };
 		A555B059195DC7B500809A4A /* OBFileTransferAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBFileTransferAgent.h; sourceTree = "<group>"; };
 		A555B05A195DC7B500809A4A /* OBFileTransferAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBFileTransferAgent.m; sourceTree = "<group>"; };
-		A582378E197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OBFileTransferTaskModel.xcdatamodel; sourceTree = "<group>"; };
 		A582D8881979CB7600169146 /* OBFileTransferAgentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBFileTransferAgentFactory.h; sourceTree = "<group>"; };
 		A582D8891979CB7600169146 /* OBFileTransferAgentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBFileTransferAgentFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				A5298DF61985BF2C0043FBCC /* doc */,
-				A582378D197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodeld */,
 				A513062D1954D9010002D372 /* AWS */,
 				A51305FB1954D6560002D372 /* FileTransferPlay */,
 				A513061A1954D6560002D372 /* FileTransferPlayTests */,
@@ -323,7 +318,6 @@
 				A5446311195A18CC005ED14E /* ok.png */,
 				A544630A195A123D005ED14E /* download.png */,
 				A544630B195A123D005ED14E /* upload.png */,
-				A54462FE1958A6CF005ED14E /* Georgia1.jpg */,
 				A51306621957D7320002D372 /* uploadtest.jpg */,
 				A513065E1954DA080002D372 /* 3generationsmen.JPG */,
 			);
@@ -473,7 +467,6 @@
 				A5298DEC19819C970043FBCC /* mimeTypes.txt in Resources */,
 				A51306631957D7320002D372 /* uploadtest.jpg in Resources */,
 				A5298DF81985BF450043FBCC /* experiments.txt in Resources */,
-				A54462FF1958A6CF005ED14E /* Georgia1.jpg in Resources */,
 				A5446313195A18CC005ED14E /* ok.png in Resources */,
 				A513060E1954D6560002D372 /* Images.xcassets in Resources */,
 				A5298E05198802550043FBCC /* retry.png in Resources */,
@@ -505,7 +498,6 @@
 				A51306571954D9010002D372 /* Response.m in Sources */,
 				A51306531954D9010002D372 /* KeychainItemWrapper.m in Sources */,
 				A51306061954D6560002D372 /* OBAppDelegate.m in Sources */,
-				A582378F197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodeld in Sources */,
 				A51306021954D6560002D372 /* main.m in Sources */,
 				A555B05B195DC7B500809A4A /* OBFileTransferAgent.m in Sources */,
 				A54463051959EDBD005ED14E /* OBTransferView.m in Sources */,
@@ -751,19 +743,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A582378D197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A582378E197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodel */,
-			);
-			currentVersion = A582378E197F2704005B7AF0 /* OBFileTransferTaskModel.xcdatamodel */;
-			path = OBFileTransferTaskModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A51305EA1954D6560002D372 /* Project object */;
 }

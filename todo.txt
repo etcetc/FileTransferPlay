@@ -1,5 +1,5 @@
 - Create view that lets me change where I'm uploading to and the number of uploads
-- Test out uploads when in background we go to airplane mode
-- Implement persistence for the file transfers
-  - and restart for the file transfer manager
+x Test out uploads when in background we go to airplane mode
+x Implement persistence for the file transfers
+  x and restart for the file transfer manager
 
